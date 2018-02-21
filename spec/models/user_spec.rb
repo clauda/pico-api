@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 describe User do
-  let(:user) { create(:user) }
+  subject { create(:user) }
 
   describe 'valid user' do
-    subject { user }
-    it { expect(user).to be_valid }
+    it { expect(subject).to be_valid }
   end
 
   describe '#generate_api_key' do
