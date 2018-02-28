@@ -6,6 +6,12 @@ class ApplicationController < ActionController::API
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
 
+  def require_admin
+    unless current_user.admin?
+      render json: { error: 'Sorry, access denied!' }, status: :forbidden
+    end
+  end
+
   protected
 
     def configure_permitted_parameters
