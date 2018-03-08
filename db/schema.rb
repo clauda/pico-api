@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308055050) do
+ActiveRecord::Schema.define(version: 20180308061026) do
 
   create_table "beaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 20180308055050) do
     t.boolean "published", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "webcam_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+    t.index ["webcam_id"], name: "index_favorites_on_webcam_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -68,5 +77,7 @@ ActiveRecord::Schema.define(version: 20180308055050) do
     t.index ["beach_id"], name: "index_webcams_on_beach_id"
   end
 
+  add_foreign_key "favorites", "users"
+  add_foreign_key "favorites", "webcams"
   add_foreign_key "webcams", "beaches"
 end
