@@ -24,12 +24,19 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe WebcamsController, type: :controller do
+  let(:beach) { create(:beach) }
 
   # This should return the minimal set of attributes required to create a valid
   # Webcam. As you add validations to Webcam, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: Faker::Ancient.primordial, description: Faker::ChuckNorris.fact, short_name: 'Aloha', latitude: -1.2, longitude: 2.3 }
+    { 
+      name: Faker::Ancient.primordial, 
+      description: Faker::ChuckNorris.fact, 
+      short_name: 'Aloha', 
+      latitude: -1.2, 
+      longitude: 2.3, 
+      beach_id: beach.id }
   }
   
   let(:invalid_attributes) { { name: nil } }
@@ -63,10 +70,10 @@ RSpec.describe WebcamsController, type: :controller do
             post :create, params: { webcam: valid_attributes }, format: :json
           }.to change(Webcam, :count).by(1)
         end
-
+        
         it "renders a JSON response with the new webcam" do
-
           post :create, params: { webcam: valid_attributes }, format: :json
+          p response.body
           expect(response).to have_http_status(:created)
           expect(response.content_type).to eq('application/json')
           expect(response.location).to eq(webcam_url(Webcam.last))

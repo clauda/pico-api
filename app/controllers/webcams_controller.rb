@@ -48,6 +48,6 @@ class WebcamsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def webcam_params
-      params.require(:webcam).permit(:name, :description, :short_name, :published, :views_counter, :latitude, :longitude, :code, :slug)
+      params.require(:webcam).permit(:name, :description, :short_name, :published, :latitude, :longitude, :code, :slug, :beach_id)
     end
 end

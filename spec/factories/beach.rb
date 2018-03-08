@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :beach do
     name Faker::Name.name
-    city 'Natal'
+    city Faker::HitchhikersGuideToTheGalaxy.planet
     state 'RN'
-    slug 'ponta-negra-natal-rn'
+    slug nil
     published true
   end
 end

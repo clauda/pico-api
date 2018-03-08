@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180308043153) do
+ActiveRecord::Schema.define(version: 20180308055050) do
 
   create_table "beaches", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -64,6 +64,9 @@ ActiveRecord::Schema.define(version: 20180308043153) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "beach_id"
+    t.index ["beach_id"], name: "index_webcams_on_beach_id"
   end
 
+  add_foreign_key "webcams", "beaches"
 end

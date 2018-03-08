@@ -1,5 +1,7 @@
 class Beach < ApplicationRecord
   include Sluggable
+  has_many :webcams
+  
   validates :name, :city, :state, presence: true
 
   def slug_me

@@ -8,5 +8,6 @@ FactoryBot.define do
     latitude -5.869633
     longitude -35.178308
     code 'WOIED123'
+    beach
   end
 end
