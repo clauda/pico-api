@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :beach do
-    name 'Ponta Negra'
+    name Faker::Name.name
     city 'Natal'
     state 'RN'
     slug 'ponta-negra-natal-rn'

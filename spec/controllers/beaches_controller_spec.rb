@@ -23,7 +23,7 @@ RSpec.describe BeachesController, type: :controller do
 
   describe 'GET #show' do
     let(:beach) { create(:beach) }
-    subject { get :show, params: { id: beach.id }, format: :json }
+    subject { get :show, params: { id: beach.to_param }, format: :json }
  
     context 'no auth' do
       it { is_expected.to be_successful }

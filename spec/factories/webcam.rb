@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :webcam do
-    name 'Hotel Manary na Praia de Ponta Negra, Natal/RN'
+    name Faker::Name.name
     description 'Lado leste da Praia de Ponta Negra. Neste ponto as ondas chegam até 2 metros.'
     short_name 'Manary Ponta Negra'
     slug 'manary-ponta-negra-natal-rn'

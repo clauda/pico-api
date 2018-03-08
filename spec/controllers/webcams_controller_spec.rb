@@ -29,7 +29,7 @@ RSpec.describe WebcamsController, type: :controller do
   # Webcam. As you add validations to Webcam, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { name: 'Aloha Bar', description: 'Pretty Long Bla Bla Bla', short_name: 'Aloha', latitude: -1.2, longitude: 2.3, slug: 'aloha-black-point' }
+    { name: Faker::Ancient.primordial, description: Faker::ChuckNorris.fact, short_name: 'Aloha', latitude: -1.2, longitude: 2.3 }
   }
   
   let(:invalid_attributes) { { name: nil } }
@@ -98,9 +98,7 @@ RSpec.describe WebcamsController, type: :controller do
     context "with valid params" do
       before { request.headers.merge! admin.create_new_auth_token }
 
-      let(:new_attributes) {
-        { name: 'Novo Point' }
-      }
+      let(:new_attributes) { { name: 'Novo Point' } }
 
       it "updates the requested webcam" do
         webcam = Webcam.create! valid_attributes

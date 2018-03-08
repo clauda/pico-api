@@ -8,7 +8,7 @@ class BeachesController < ApplicationController
   end
 
   def show
-    @beach = Beach.find(params[:id])
+    @beach = Beach.by_slug(params[:id])
     render json: BeachSerializer.new(@beach).serialized_json
   end
 

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    first_name 'John'
+    first_name Faker::Science.scientist
     last_name 'Watson'
     city 'London'
     state 'UK'

@@ -1,5 +1,4 @@
 class Webcam < ApplicationRecord
-
-  validates :name, :description, :short_name, :slug, presence: true
-
+  include Sluggable
+  validates :name, :description, :short_name, presence: true
 end

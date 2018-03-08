@@ -1,3 +1,8 @@
 class Beach < ApplicationRecord
-  validates :name, :city, :state, :slug, presence: true
+  include Sluggable
+  validates :name, :city, :state, presence: true
+
+  def slug_me
+    self.slug = "#{self.name} #{self.city} #{self.state}".parameterize
+  end
 end
